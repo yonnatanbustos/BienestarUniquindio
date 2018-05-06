@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="labelUsuario">User</string>
+    <string name="labelContrasena">Password</string>
+
+    <string name="btnIngresarAdministrador">Administrator</string>
+    <string name="btnIngresarCliente">Customer</string>
+    <string name="btnRegistrarse">Register</string>
+    <string name="labelIniciarSesion">Login</string>
+    <string name="labelRegistrarse">Register</string>
+    <string name="itemIdioma">Change Language</string>
+    <string name="itemSalir">Exit</string>
+    <string name="itemAyuda">Help</string>
+    <string name="labelRegistro">Regestry</string>
+    <string name="labelCedula">EC</string>
+    <string name="labelNombres">Names</string>
+    <string name="labelApellidos">Surnames</string>
+    <string name="labelEmal">E-mail</string>
+    <string name="labelTelefono">Phone</string>
+    <string name="labelDependencia">Dependency</string>
+    <string name="labelTipo">Tipe</string>
+    <string name="labelFoto">Photo</string>
+    <string name="labelNombreUsuario">Name user</string>
+
+</resources>

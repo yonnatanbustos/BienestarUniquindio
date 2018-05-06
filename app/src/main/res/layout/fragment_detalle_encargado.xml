@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFondo"
+    tools:context=".fragments.DetalleEncargadoFragment">
+
+    <LinearLayout
+        android:id="@+id/layouts_btns_detalle_encargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+
+        <ImageButton
+            android:id="@+id/btn_guardar_cambios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorFondo"
+            android:src="@drawable/ic_guardar" />
+
+        <ImageButton
+            android:id="@+id/btn_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/white"
+            android:src="@drawable/ic_cancelar" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtNombreEncargado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/edit_text_redondo"
+                    android:enabled="false"
+                    android:hint="@string/labelNombreServicio"
+                    android:padding="10dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="30dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtCedulaEncargado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/edit_text_redondo"
+                    android:enabled="false"
+                    android:hint="@string/labelCedula"
+                    android:padding="10dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="30dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtContrasenaEncargado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/edit_text_redondo"
+                    android:enabled="false"
+                    android:hint="@string/labelContrasena"
+                    android:padding="10dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="30dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/labelServiciosGestionar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/labelServiciosGestionar"
+                android:textSize="20dp" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/comboServicioGestionar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@android:color/white"
+                android:enabled="false"
+                android:entries="@array/comboGestionServicio"
+                android:spinnerMode="dropdown">
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+            <TextView
+                android:id="@+id/labelFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/labelFoto"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/foto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_redondo"
+                android:src="@drawable/usuario" />
+
+            <Button
+                android:id="@+id/btnSeleccionar"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="190dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/boton_redondo"
+                android:text="@string/btnSeleccionar"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/texto_botones"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/flotante_margin"
+            app:menu_colorNormal="@android:color/white"
+            app:menu_fab_label="@string/menu"
+            app:menu_icon="@drawable/ic_menu">
+
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_btn_eliminar_detalle_encargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cancelar"
+                app:fab_colorNormal="@android:color/white"
+                app:fab_label="@string/btn_eliminar" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_btn_editar_encargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_editar_verde"
+                app:fab_colorNormal="@android:color/white"
+                app:fab_label="@string/btn_editar" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

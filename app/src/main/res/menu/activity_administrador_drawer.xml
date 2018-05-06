@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/itemConfigurarPerfil"
+            android:icon="@drawable/itemajustes"
+            android:title="@string/itemConfigurarPerfil"/>
+
+        <item
+            android:id="@+id/itemSalir"
+            android:icon="@drawable/itemcerrarsesion"
+            android:title="@string/itemSalir" />
+
+    </group>
+
+    <item android:title="@string/operaciones">
+        <menu>
+            <item
+                android:id="@+id/item_agregar_servicio"
+                android:icon="@drawable/iconagregar"
+                android:title="@string/menuAgregarServicio"/>
+            <item
+                android:id="@+id/item_agregar_encargado"
+                android:icon="@drawable/iconagregar"
+                android:title="@string/menuAgregarEncargado" />
+        </menu>
+    </item>
+
+
+</menu>

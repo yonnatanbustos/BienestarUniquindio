@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.DetalleServicioFragment">
+
+    <LinearLayout
+        android:id="@+id/layout_btns_detalle_servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible">
+
+        <ImageButton
+            android:id="@+id/btn_guardar_cambios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_guardar"
+            android:backgroundTint="@color/colorFondo" />
+
+        <ImageButton
+            android:id="@+id/btn_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_cancelar"
+            android:backgroundTint="@android:color/white" />
+    </LinearLayout>
+
+
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/label_titulo_servicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Servicio"
+                android:textAlignment="center"
+                android:textSize="@dimen/label_titulo"
+                android:enabled="false"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/image_servicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/fotoservicio" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/btn_modificar_foto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginLeft="-25dp"
+                    app:backgroundTint="@color/colorFondo"
+                    android:src="@drawable/ic_foto"
+                    android:visibility="invisible"/>
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/txt_informacion_servicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="5"
+                android:enabled="false"
+                android:text="Descripcion del servicio \n Hora del servicio: \n Lugar del servcio: \nEncargado del servicio: "
+                android:textSize="@dimen/edit_text"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_modificar_servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/flotante_margin"
+        app:backgroundTint="@color/colorFondo"
+        android:src="@drawable/ic_modificar"/>
+
+</LinearLayout>

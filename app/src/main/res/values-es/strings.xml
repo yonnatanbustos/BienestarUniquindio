@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="labelUsuario">Usuario</string>
+    <string name="labelContrasena">Contraseña</string>
+    <string name="btnIngresarAdministrador">Administrador</string>
+    <string name="btnIngresarCliente">Cliente</string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="labelIniciarSesion">Inicio de Sesión</string>
+    <string name="labelRegistrarse">Registrarse</string>
+    <string name="itemIdioma">Cambiar Idioma</string>
+    <string name="itemSalir">Cerrar Sesión</string>
+    <string name="itemAyuda">Ayuda</string>
+    <string name="labelRegistro">Registro</string>
+    <string name="labelCedula">Cedula</string>
+    <string name="labelNombres">Nombres</string>
+    <string name="labelApellidos">Apellidos</string>
+    <string name="labelEmal">E-mail</string>
+    <string name="labelTelefono">Telefono</string>
+    <string name="labelDependencia">Dependencia</string>
+    <string name="labelTipo">Tipo</string>
+    <string name="labelFoto">Foto</string>
+    <string name="labelNombreUsuario">Nombre de usuario</string>
+
+    <string name="btnServicios">Servicios</string>
+    <string name="title_activity_principal_administrador">Administrador</string>
+    <string name="title_activity_principal_cliente">Usuario</string>
+    <string name="title_activity_servicio_administrador">Servicios</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
+
+    <string name="labelNombreServicio">Nombre</string>
+    <string name="labelLugarServicio">Lugar</string>
+    <string name="labelDias">Dias</string>
+    <string name="labelCategoria">Categoria</string>
+    <string name="btnRegistrar">Registrar</string>
+    <string name="btnSeleccionar">Seleccionar</string>
+    <string name="menuBuscar">Buscar</string>
+    <string name="menuAgregarServicio">Agregar Servicio</string>
+    <string name="btnEncargados">Encargados</string>
+    <string name="itemConfigurarPerfil">Configurar Perfil</string>
+    <string-array name="comboTipo">
+        <item>ESTUDIANTE</item>
+        <item>PROFESOR</item>
+        <item>ADMINISTRATIVO</item>
+    </string-array>
+    <string-array name="comboDependencia">
+        <item>INGENIERIA DE SISTEMAS</item>
+        <item>INGENIERIA CIVIL</item>
+        <item>INGENIERIA ELECTRONICA</item>
+    </string-array>
+    <drawable name="colorFondo">#029834</drawable>
+    <string name="labelServiciosGestionar">Servicio a gestionar</string>
+    <string-array name="comboGestionServicio">
+        <item>Futbol</item>
+        <item>Terapia</item>
+        <item>Psicologia</item>
+    </string-array>
+    <string name="menuAgregarEncargado">Agregar Encargado</string>
+    <string name="btnModificarPerfil">Modificar Perfil</string>
+    <string name="itemSolicitarServicio">Solicitar servicio</string>
+    <string name="operaciones">Operaciones</string>
+    <string name="misservicios">Mis servicios</string>
+    <string name="btnIngresarEncargado">Encargado</string>
+    <string name="btn_guardar_cambios">Guardar Cambios</string>
+    <string name="menu">Menu</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="btn_editar">Editar</string>
+</resources>
