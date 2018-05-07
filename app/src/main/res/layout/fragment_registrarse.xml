@@ -41,9 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/edit_text_redondo"
                     android:hint="@string/labelCedula"
-                    android:textColorHint="@android:color/darker_gray"
                     android:textSize="30dp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -59,9 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/edit_text_redondo"
                     android:hint="@string/labelNombres"
-                    android:textColorHint="@android:color/darker_gray"
                     android:textSize="30dp" />
             </android.support.design.widget.TextInputLayout>
 
@@ -77,9 +73,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_redondo"
                     android:hint="@string/labelApellidos"
-                    android:textColorHint="@android:color/darker_gray"
                     android:textSize="30dp" />
             </android.support.design.widget.TextInputLayout>
 
@@ -96,9 +90,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_redondo"
                     android:hint="@string/labelEmal"
-                    android:textColorHint="@android:color/darker_gray"
                     android:textSize="30dp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -116,9 +108,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/edit_text_redondo"
                     android:hint="@string/labelTelefono"
-                    android:textColorHint="@android:color/darker_gray"
                     android:textSize="30dp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -139,7 +129,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@android:color/white"
                 android:entries="@array/comboTipo"
                 android:spinnerMode="dropdown">
 
@@ -161,7 +150,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@android:color/white"
                 android:entries="@array/comboDependencia"
                 android:spinnerMode="dropdown">
 
@@ -178,19 +166,18 @@
                 android:textSize="20dp" />
 
             <ImageView
-                android:id="@+id/foto"
+                android:id="@+id/foto_registro_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:background="@drawable/edit_text_redondo"
-                android:src="@drawable/usuario" />
+                android:background="@drawable/edit_text_redondo" />
 
             <Button
-                android:id="@+id/btnSeleccionar"
+                android:id="@+id/btn_seleccionar_foto_registro"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="70dp"
                 android:layout_marginRight="190dp"
                 android:layout_marginTop="1dp"
                 android:background="@drawable/boton_redondo"
@@ -200,10 +187,10 @@
                 android:textSize="15dp" />
 
             <Button
-                android:id="@+id/btnRegistrar"
+                android:id="@+id/btn_registrar_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginTop="30dp"

@@ -100,7 +100,7 @@
                     android:text="@string/btnIngresarAdministrador"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="@dimen/texto_botones" />
 
                 <Button
                     android:id="@+id/btnIngresarCliente"
@@ -114,7 +114,7 @@
                     android:text="@string/btnIngresarCliente"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="@dimen/texto_botones" />
 
                 <Button
                     android:id="@+id/btnIngresarEncargado"
@@ -128,7 +128,7 @@
                     android:text="@string/btnIngresarEncargado"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="@dimen/texto_botones" />
 
 
             </LinearLayout>
@@ -151,7 +151,8 @@
                     android:text="@string/labelRegistrarse"
                     android:textAlignment="center"
                     android:textColor="#002299"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    android:onClick="abrirVentanaRegistrarse"/>
 
             </LinearLayout>
         </LinearLayout>
