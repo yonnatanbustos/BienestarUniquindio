@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_cambiar_idioma"
-        android:icon="@drawable/itemidioma"
+        android:icon="@drawable/ic_traducir"
         android:orderInCategory="4"
         android:title="@string/itemIdioma"
         app:showAsAction="ifRoom" />

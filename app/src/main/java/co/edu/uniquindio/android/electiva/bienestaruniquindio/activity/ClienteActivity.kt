@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Servicio
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.*
 import kotlinx.android.synthetic.main.activity_cliente.*
@@ -61,9 +62,16 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+            R.id.menu_cambiar_idioma -> {
+                selecionarIdioma(this)
+                val intent = this.intent
+                intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                        Intent.FLAG_ACTIVITY_NEW_TASK)
+                this.finish()
+                this.startActivity(intent)
+            }
         }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

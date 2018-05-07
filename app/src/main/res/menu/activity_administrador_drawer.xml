@@ -5,7 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/itemConfigurarPerfil"
+            android:id="@+id/item_ver_perfil_fragment_administrador"
             android:icon="@drawable/itemajustes"
             android:title="@string/itemConfigurarPerfil"/>
 

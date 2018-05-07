@@ -1,5 +1,6 @@
 package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -10,10 +11,15 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaServicioFragment
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.VerPerfilFragment
 import kotlinx.android.synthetic.main.activity_encargado.*
 import kotlinx.android.synthetic.main.app_bar_encargado.*
 
+/**
+ * Actividad que soporta todos los fragmentos del Encargado
+ */
 class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaServicioFragment.OnServicioSeleccionadoListener {
 
 
@@ -27,7 +33,7 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
+        nav_view.itemIconTintList = null
         nav_view.setNavigationItemSelectedListener(this)
 
         remplazarFragmento(ListaServicioFragment(), false)
@@ -52,15 +58,29 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+            R.id.menu_cambiar_idioma -> {
+                selecionarIdioma(this)
+                val intent = this.intent
+                intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                        Intent.FLAG_ACTIVITY_NEW_TASK)
+                this.finish()
+                this.startActivity(intent)
+            }
         }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-
+            R.id.nav_configurarperfil_encargado -> {
+                remplazarFragmento(VerPerfilFragment(),true)
+            }
+            R.id.nav_cerrarsesion_encargado ->{
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                this.onDestroy()
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
@@ -82,4 +102,6 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         transacion.commit()
 
     }
-}
+
+
+}//Cierre de la actividad

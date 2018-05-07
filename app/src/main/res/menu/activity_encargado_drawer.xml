@@ -5,11 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_configurarperfil"
+            android:id="@+id/nav_configurarperfil_encargado"
             android:icon="@drawable/itemajustes"
             android:title="@string/itemConfigurarPerfil" />
         <item
-            android:id="@+id/nav_cerrarsesion"
+            android:id="@+id/nav_cerrarsesion_encargado"
             android:icon="@drawable/itemcerrarsesion"
             android:title="@string/itemSalir" />
     </group>

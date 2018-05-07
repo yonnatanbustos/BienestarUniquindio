@@ -19,6 +19,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Encargado
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.*
 import kotlinx.android.synthetic.main.activity_administrador.*
@@ -36,7 +37,6 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     lateinit var calendario: Calendar
     lateinit var selectorFecha: DatePickerDialog
-    lateinit var selectedImageUri: Uri
     lateinit var selectedImage: Uri
     var encargados = ArrayList<Encargado>()
     var imageStream = null
@@ -82,11 +82,21 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+            R.id.menu_cambiar_idioma -> {
+                selecionarIdioma(this)
+                val intent = this.intent
+                intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                        Intent.FLAG_ACTIVITY_NEW_TASK)
+                this.finish()
+                this.startActivity(intent)
+            }
         }
+        return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Funcion que permite hacer la correspondiente navegacion por el drawer de administrador
+     */
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
@@ -95,6 +105,9 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
             R.id.item_agregar_encargado -> {
                 abrirFragmento(RegistrarEncargadoFragment(), true, "RegistrarEncargado")
+            }
+            R.id.item_ver_perfil_fragment_administrador -> {
+                abrirFragmento(VerPerfilFragment(), true, "")
             }
 
         }
