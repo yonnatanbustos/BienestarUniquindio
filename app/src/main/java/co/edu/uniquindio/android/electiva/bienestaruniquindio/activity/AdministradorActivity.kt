@@ -203,15 +203,11 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == Activity.RESULT_OK) {
             selectedImage = data.data
+            foto_encargado_registrar.setImageURI(selectedImage)
             var selectedPath = selectedImage.path
             if (requestCode == SELECT_FILE) {
                 if (selectedPath != null) {
-                    try {
-                        imageStream = contentResolver.openInputStream(selectedImage) as Nothing?
 
-                    } catch (e: FileNotFoundException) {
-                        e.printStackTrace()
-                    }
                     val bmp: Bitmap = BitmapFactory.decodeStream(imageStream)
                     foto_encargado_registrar.setImageBitmap(bmp)
 

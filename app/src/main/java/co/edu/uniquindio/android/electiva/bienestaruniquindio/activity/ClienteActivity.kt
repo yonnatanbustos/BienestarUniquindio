@@ -12,16 +12,13 @@ import android.view.MenuItem
 import android.view.View
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Servicio
-import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.DetalleServicioCliente
-import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaCategoriaFragment
-import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaServicioFragment
-import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.VerPerfilFragment
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.*
 import kotlinx.android.synthetic.main.activity_cliente.*
 import kotlinx.android.synthetic.main.app_bar_cliente.*
 import kotlinx.android.synthetic.main.fragment_lista_encargado.*
 import java.util.ArrayList
 
-class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, ListaServicioFragment.OnServicioSeleccionadoListener {
+class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, ListaServicioFragment.OnServicioSeleccionadoListener, ListaMisServiciosFragment.OnServicioSeleccionadoListener {
 
     var mis_servicios = ArrayList<Servicio>()
 
@@ -77,16 +74,14 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             }
             R.id.nav_cerrarsesion -> {
                 val intent = Intent(this, LoginActivity::class.java)
-                this.onDestroy()
                 startActivity(intent)
+                this.onDestroy()
 
 
             }
 
             R.id.nav_mis_servicios -> {
-
-            }
-            R.id.nav_solicitar_servicio -> {
+                abrirFragmento(ListaMisServiciosFragment(), true, "AbrirMisServicios")
 
             }
 
@@ -101,6 +96,15 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     }
 
     override fun abrirFragmento(fragment: Fragment, estado: Boolean, tipo: String) {
+        if (tipo.equals("AbrirMisServicios")) {
+            val fragmentList = fragment as
+                    ListaMisServiciosFragment
+            mis_servicios = ArrayList()
+            mis_servicios.add(Servicio("Futbol"))
+            mis_servicios.add(Servicio("Natacion"))
+            mis_servicios.add(Servicio("Tenis"))
+            fragmentList.mis_servicios = mis_servicios
+        }
         val transaccion = supportFragmentManager.beginTransaction().replace(R.id.contenedor_cliente, fragment)
         if (estado) {
             transaccion.addToBackStack(null)
@@ -127,7 +131,6 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     override fun onServicioSeleccionado(pos: Int) {
         abrirFragmento(DetalleServicioCliente(), true, "")
-
     }
 
 

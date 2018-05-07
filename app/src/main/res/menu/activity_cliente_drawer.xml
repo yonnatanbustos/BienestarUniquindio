@@ -21,11 +21,6 @@
                 android:id="@+id/nav_mis_servicios"
                 android:icon="@drawable/ic_mis_servicios"
                 android:title="@string/misservicios" />
-            <item
-                android:id="@+id/nav_solicitar_servicio"
-                android:icon="@drawable/iconagregar"
-                android:title="@string/itemSolicitarServicio" />
-
         </menu>
     </item>
 
