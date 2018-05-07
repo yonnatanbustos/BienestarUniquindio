@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.RegistrarseFragment
 import kotlinx.android.synthetic.main.app_bar_iniciar_sesion.*
 
 class LoginActivity : AppCompatActivity() {
@@ -70,6 +71,13 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, EncargadoActivity::class.java)
         startActivity(intent)
 
+    }
+
+    /**
+     *
+     */
+    fun abrirVentanaRegistrarse(v: View?) {
+        supportFragmentManager.beginTransaction().replace(R.id.contenedor_login, RegistrarseFragment()).addToBackStack(null).commit()
     }
 
 
