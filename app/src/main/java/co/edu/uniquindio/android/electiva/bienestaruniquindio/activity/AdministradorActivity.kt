@@ -2,6 +2,8 @@ package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity
 
 
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -23,10 +25,14 @@ import kotlinx.android.synthetic.main.fragment_detalle_servicio.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+private const val SELECT_FILE = 1
+
 class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaEncargadoFragment.OnEncargadoSeleccionadoListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, IniciarAdministradorFragment.OnClickIniciarAdministrador, RegistrarServicioFragment.OnClickCalendario, RegistrarEncargadoFragment.OnClickRegistrarEncargado, ListaServicioFragment.OnServicioSeleccionadoListener, DetalleServicioFragment.onClickDetalleServicio, DetalleEncargadoFragment.onClickDetalleEncargado {
 
     lateinit var calendario: Calendar
     lateinit var selectorFecha: DatePickerDialog
+    lateinit var selectedImageUri: Uri
+    lateinit var selectedImage: Uri
     var encargados = ArrayList<Encargado>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,7 +106,6 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     }
 
 
-
     override fun abrirCalendario(fragment: Fragment) {
         calendario = Calendar.getInstance()
         val year = calendario.get(Calendar.YEAR)
@@ -114,7 +119,7 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
 
     override fun onEncargadoSeleccionado(pos: Int) {
-        abrirFragmento(DetalleEncargadoFragment(),true, "" )
+        abrirFragmento(DetalleEncargadoFragment(), true, "")
 
     }
 
@@ -154,11 +159,11 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
      */
     override fun cambiarEstado(estado: Boolean) {
 
-        if(estado) {
+        if (estado) {
             layout_btns_detalle_servicio.visibility = View.VISIBLE
             btn_modificar_foto.visibility = View.VISIBLE
             btn_modificar_servicio.visibility = View.INVISIBLE
-        }else{
+        } else {
             layout_btns_detalle_servicio.visibility = View.INVISIBLE
             btn_modificar_foto.visibility = View.INVISIBLE
             btn_modificar_servicio.visibility = View.VISIBLE
@@ -175,20 +180,30 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     }
 
     override fun seleccionarFoto() {
+        val intent = Intent()
+        intent.setType("image/**")
+        intent.setAction(Intent.ACTION_GET_CONTENT)
+        startActivityForResult(Intent.createChooser(intent, "seleccione una imagen"), SELECT_FILE)
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        
     }
 
     /**
      * Funcion que permite habilitar los campos de la ventana DetalleEncargado
      */
     override fun cambiarEstadoVentanaDetalleEncargado(estado: Boolean) {
-        if(estado){
+        if (estado) {
             txtNombreEncargado.isEnabled = estado
             txtCedulaEncargado.isEnabled = estado
             txtContrasenaEncargado.isEnabled = estado
             comboServicioGestionar.isEnabled = estado
             layouts_btns_detalle_encargado.visibility = View.VISIBLE
-        }else{
+        } else {
             txtNombreEncargado.isEnabled = estado
             txtCedulaEncargado.isEnabled = estado
             txtContrasenaEncargado.isEnabled = estado

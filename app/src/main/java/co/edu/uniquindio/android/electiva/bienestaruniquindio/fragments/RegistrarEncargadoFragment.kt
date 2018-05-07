@@ -30,6 +30,7 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
 
     interface OnClickRegistrarEncargado {
         fun agregarEncargado(nombre: String)
+        fun seleccionarFoto()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +42,7 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btnRegistrar.setOnClickListener(this)
+        btnSeleccionar.setOnClickListener(this)
     }
 
     override fun onAttach(context: Context?) {
@@ -60,7 +62,9 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
             R.id.btnRegistrar -> {
                 var nombre = txtNombreEncargado.text
                 listener.agregarEncargado(nombre.toString())
-
+            }
+            R.id.btnSeleccionar -> {
+                listener.seleccionarFoto()
             }
         }
 
