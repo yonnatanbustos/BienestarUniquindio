@@ -27,10 +27,6 @@
             android:label="@string/title_activity_cliente"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.ejemplo"
-            android:label="@string/title_activity_ejemplo"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activity.EncargadoActivity"
             android:label="@string/title_activity_encargado"
             android:theme="@style/AppTheme.NoActionBar"></activity>
