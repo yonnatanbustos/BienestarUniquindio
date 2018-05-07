@@ -25,7 +25,7 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
 
     interface OnClickRegistrarse {
         fun seleccionarFotoRegistrarse()
-        fun registrarUsuario()
+        fun registrarUsuario(nombre:String)
     }
 
     /**
@@ -66,7 +66,7 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
                 listener.seleccionarFotoRegistrarse()
             }
             R.id.btn_registrar_usuario -> {
-                listener.registrarUsuario()
+                listener.registrarUsuario(txtNombres.text.toString())
             }
         }
     }

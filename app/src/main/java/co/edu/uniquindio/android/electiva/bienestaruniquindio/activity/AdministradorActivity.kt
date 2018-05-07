@@ -2,6 +2,7 @@ package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity
 
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
