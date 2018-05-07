@@ -12,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaClienteXEncargadoFragment
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaServicioFragment
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.VerPerfilFragment
 import kotlinx.android.synthetic.main.activity_encargado.*
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.app_bar_encargado.*
 /**
  * Actividad que soporta todos los fragmentos del Encargado
  */
-class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaServicioFragment.OnServicioSeleccionadoListener {
+class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaServicioFragment.OnServicioSeleccionadoListener, ListaClienteXEncargadoFragment.OnClickClienteXEncargadoSeleccionadoListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,9 +75,9 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_configurarperfil_encargado -> {
-                remplazarFragmento(VerPerfilFragment(),true)
+                remplazarFragmento(VerPerfilFragment(), true)
             }
-            R.id.nav_cerrarsesion_encargado ->{
+            R.id.nav_cerrarsesion_encargado -> {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 this.onDestroy()
@@ -101,6 +102,10 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         transacion.commit()
 
+    }
+
+    override fun OnClienteXEncargadoSeleccionado(pos: Int) {
+        remplazarFragmento(ListaClienteXEncargadoFragment(), true)
     }
 
 
