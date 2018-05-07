@@ -1,8 +1,11 @@
 package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity
 
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
@@ -22,6 +25,8 @@ import kotlinx.android.synthetic.main.activity_administrador.*
 import kotlinx.android.synthetic.main.app_bar_administrador.*
 import kotlinx.android.synthetic.main.fragment_detalle_encargado.*
 import kotlinx.android.synthetic.main.fragment_detalle_servicio.*
+import kotlinx.android.synthetic.main.fragment_registrar_encargado.*
+import java.io.FileNotFoundException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,6 +39,7 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     lateinit var selectedImageUri: Uri
     lateinit var selectedImage: Uri
     var encargados = ArrayList<Encargado>()
+    var imageStream = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -184,12 +190,28 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         intent.setType("image/**")
         intent.setAction(Intent.ACTION_GET_CONTENT)
         startActivityForResult(Intent.createChooser(intent, "seleccione una imagen"), SELECT_FILE)
-
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
+        selectedImageUri
+        if (requestCode == Activity.RESULT_OK) {
+            selectedImage = data.data
+            var selectedPath = selectedImage.path
+            if (requestCode == SELECT_FILE) {
+                if (selectedPath != null) {
+                    try {
+                        imageStream = contentResolver.openInputStream(selectedImage) as Nothing?
 
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    }
+                    val bmp: Bitmap = BitmapFactory.decodeStream(imageStream)
+                    foto_encargado_registrar.setImageBitmap(bmp)
+
+                }
+            }
+        }
 
     }
 
