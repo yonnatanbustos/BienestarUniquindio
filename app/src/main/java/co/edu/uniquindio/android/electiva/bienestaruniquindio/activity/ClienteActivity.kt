@@ -18,7 +18,8 @@ import kotlinx.android.synthetic.main.app_bar_cliente.*
 import kotlinx.android.synthetic.main.fragment_lista_encargado.*
 import java.util.ArrayList
 
-class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, ListaServicioFragment.OnServicioSeleccionadoListener, ListaMisServiciosFragment.OnServicioSeleccionadoListener {
+class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, ListaServicioFragment.OnServicioSeleccionadoListener, ListaMisServiciosFragment.OnServicioSeleccionadoListener, DetalleServicioCliente.OnClickDetalleServicioCliente {
+
 
     var mis_servicios = ArrayList<Servicio>()
 
@@ -131,6 +132,9 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     override fun onServicioSeleccionado(pos: Int) {
         abrirFragmento(DetalleServicioCliente(), true, "")
+    }
+
+    override fun solicitarServicio() {
     }
 
 

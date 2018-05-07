@@ -4,6 +4,7 @@ package co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_registrar_encargado.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private const val SELECT_FILE = 1
 
 /**
  * A simple [Fragment] subclass.
@@ -46,10 +48,8 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
         btn_seleccionar_foto_encargado_registrar.setOnClickListener(this)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
 
-    }
+
 
 
 
@@ -73,6 +73,8 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
             }
             R.id.btn_seleccionar_foto_encargado_registrar -> {
                 listener.seleccionarFoto()
+
+
             }
         }
 

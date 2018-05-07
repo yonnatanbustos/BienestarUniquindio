@@ -55,6 +55,10 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         nav_view.setNavigationItemSelectedListener(this)
 
         remplazarFragmento(IniciarAdministradorFragment(), true)
+        encargados = ArrayList()
+        encargados.add(Encargado("Yonnatan"))
+        encargados.add(Encargado("El Flaco"))
+        encargados.add(Encargado("Alzate"))
 
     }
 
@@ -138,10 +142,7 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         if (tipo.equals("AbrirEncargados")) {
             val fragmentList = fragment as
                     ListaEncargadoFragment
-            encargados = ArrayList()
-            encargados.add(Encargado("Yonnatan"))
-            encargados.add(Encargado("El Flaco"))
-            encargados.add(Encargado("Alzate"))
+
             fragmentList.encargados = encargados
         }
         val transaccion = supportFragmentManager.beginTransaction().replace(R.id.contenedor_administrador, fragment)
@@ -199,20 +200,13 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         startActivityForResult(Intent.createChooser(intent, "seleccione una imagen"), SELECT_FILE)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Activity.RESULT_OK) {
-            selectedImage = data.data
+        if (resultCode == Activity.RESULT_OK && requestCode == SELECT_FILE) {
+            selectedImage = data!!.data
             foto_encargado_registrar.setImageURI(selectedImage)
-            var selectedPath = selectedImage.path
-            if (requestCode == SELECT_FILE) {
-                if (selectedPath != null) {
 
-                    val bmp: Bitmap = BitmapFactory.decodeStream(imageStream)
-                    foto_encargado_registrar.setImageBitmap(bmp)
-
-                }
-            }
         }
 
     }
