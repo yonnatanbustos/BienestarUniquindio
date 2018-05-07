@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         setTitle(R.string.title_activity_login)
 
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
