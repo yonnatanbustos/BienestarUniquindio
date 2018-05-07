@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class CategoriaFragment : Fragment(), View.OnClickListener {
+class CategoriaFragment : Fragment() {
 
     lateinit var listener: OnCategoriaListenr
 
@@ -38,7 +38,6 @@ class CategoriaFragment : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        btn_detalles_categoria.setOnClickListener(this)
     }
 
     override fun onAttach(context: Context?) {
@@ -52,14 +51,4 @@ class CategoriaFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btn_detalles_categoria -> {
-                listener.OnCategoria(ListaServicioFragment())
-
-            }
-        }
-
-
-    }
 }

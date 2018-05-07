@@ -17,7 +17,7 @@
 
 
         <ImageButton
-            android:id="@+id/btn_guardar_cambios"
+            android:id="@+id/btn_guardar_cambios_edicion_detalle_encargado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -25,7 +25,7 @@
             android:src="@drawable/ic_guardar" />
 
         <ImageButton
-            android:id="@+id/btn_cancelar"
+            android:id="@+id/btn_cancelar_edicion_detalle_encargado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -171,6 +171,7 @@
         android:orientation="vertical">
 
         <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab_menu_detalle_encargado"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom|end"

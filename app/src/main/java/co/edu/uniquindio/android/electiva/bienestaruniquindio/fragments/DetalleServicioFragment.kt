@@ -42,13 +42,14 @@ class DetalleServicioFragment : Fragment(), View.OnClickListener {
     }
 
 
-
-
+    /**
+     * Se añaden los escuchadores a los botones del fragmento DetalleServicio
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn_modificar_servicio.setOnClickListener(this)
-        btn_cancelar.setOnClickListener(this)
-        btn_guardar_cambios.setOnClickListener(this)
+        btn_cancelar_edicion_detalle_servicio.setOnClickListener(this)
+        btn_guardar_cambios_edicion_detalle_servicio.setOnClickListener(this)
         btn_modificar_foto.setOnClickListener(this)
     }
 
@@ -75,15 +76,15 @@ class DetalleServicioFragment : Fragment(), View.OnClickListener {
             R.id.btn_modificar_foto -> {
                 listener.seleccionarFoto()
             }
-            R.id.btn_guardar_cambios -> {
+            R.id.btn_guardar_cambios_edicion_detalle_servicio -> {
                 listener.guardarCambiosDetalleServicio()
             }
-            R.id.btn_cancelar -> {
+            R.id.btn_cancelar_edicion_detalle_servicio -> {
                 modificable = false
                 listener.cambiarEstado(false)
             }
-
         }
     }
 
-}
+
+}//Cierre del fragmento

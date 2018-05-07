@@ -36,9 +36,7 @@ class ListaEncargadoFragment : Fragment(), AdaptadorEncargado.OnClickAdaptadorDe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        encargados.add(Encargado("Yonnatan"))
-        encargados.add(Encargado("El Flaco"))
-        encargados.add(Encargado("Alzate"))
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

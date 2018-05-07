@@ -11,6 +11,7 @@ import android.view.ViewGroup
 
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import kotlinx.android.synthetic.main.fragment_detalle_encargado.*
+import kotlinx.android.synthetic.main.fragment_detalle_servicio.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,11 +31,14 @@ class DetalleEncargadoFragment : Fragment(), View.OnClickListener {
         fun guardarCambiosDetalleEncargado()
     }
 
-
+    /**
+     * Funcion que permite agregar funcionamiento a los botones del fragmento
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         fab_btn_editar_encargado.setOnClickListener(this)
         fab_btn_eliminar_detalle_encargado.setOnClickListener(this)
+        btn_cancelar_edicion_detalle_encargado.setOnClickListener(this)
     }
 
     override fun onAttach(context: Context?) {
@@ -54,10 +58,22 @@ class DetalleEncargadoFragment : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_detalle_encargado, container, false)
     }
 
+    /**
+     * Funcion que permite añadir acciones a los botones del fragmento DetalleEncargado
+     */
     override fun onClick(v: View) {
         when(v.id){
             R.id.fab_btn_editar_encargado -> {
                 listener.cambiarEstadoVentanaDetalleEncargado(true)
+            }
+            R.id.fab_btn_eliminar_detalle_encargado ->{
+
+            }
+            R.id.btn_cancelar_edicion_detalle_encargado -> {
+                listener.cambiarEstadoVentanaDetalleEncargado(false)
+            }
+            R.id.btn_guardar_cambios_edicion_detalle_encargado -> {
+
             }
         }
     }

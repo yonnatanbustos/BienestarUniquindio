@@ -1,5 +1,6 @@
 package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -8,12 +9,21 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Servicio
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.DetalleServicioCliente
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaCategoriaFragment
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.ListaServicioFragment
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.VerPerfilFragment
 import kotlinx.android.synthetic.main.activity_cliente.*
 import kotlinx.android.synthetic.main.app_bar_cliente.*
+import kotlinx.android.synthetic.main.fragment_lista_encargado.*
+import java.util.ArrayList
 
-class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener {
+class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, ListaServicioFragment.OnServicioSeleccionadoListener {
+
+    var mis_servicios = ArrayList<Servicio>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +40,7 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         nav_view.setNavigationItemSelectedListener(this)
         remplazarFragmento(ListaCategoriaFragment(), false)
+
 
     }
 
@@ -60,6 +71,24 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
+            R.id.nav_configurarperfil -> {
+                abrirFragmento(VerPerfilFragment(), true, "")
+
+            }
+            R.id.nav_cerrarsesion -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                this.onDestroy()
+                startActivity(intent)
+
+
+            }
+
+            R.id.nav_mis_servicios -> {
+
+            }
+            R.id.nav_solicitar_servicio -> {
+
+            }
 
         }
 
@@ -68,6 +97,7 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     }
 
     override fun onCategoriaSeleccionado(pos: Int) {
+        abrirFragmento(ListaServicioFragment(), true, "")
     }
 
     override fun abrirFragmento(fragment: Fragment, estado: Boolean, tipo: String) {
@@ -78,7 +108,11 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         transaccion.commit()
     }
 
+    /**
+     * Funcion que permite rempelazar fragmentos añadiendo y sacandolos de la pila
+     */
     fun remplazarFragmento(fragment: Fragment, guardarPila: Boolean) {
+
 
         val transacion = supportFragmentManager.beginTransaction()
         transacion.replace(R.id.contenedor_cliente,
@@ -87,6 +121,12 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             transacion.addToBackStack(null)
         }
         transacion.commit()
+        btnAgregarEncargado?.visibility = View.INVISIBLE
+
+    }
+
+    override fun onServicioSeleccionado(pos: Int) {
+        abrirFragmento(DetalleServicioCliente(), true, "")
 
     }
 

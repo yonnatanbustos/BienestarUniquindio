@@ -3,6 +3,7 @@ package co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -41,9 +42,16 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        btnRegistrar.setOnClickListener(this)
-        btnSeleccionar.setOnClickListener(this)
+        btn_registrar_encargado.setOnClickListener(this)
+        btn_seleccionar_foto_encargado_registrar.setOnClickListener(this)
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+    }
+
+
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -59,11 +67,11 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btnRegistrar -> {
-                var nombre = txtNombreEncargado.text
+            R.id.btn_registrar_encargado -> {
+                var nombre = txt_nombre_encargado_registrar.text
                 listener.agregarEncargado(nombre.toString())
             }
-            R.id.btnSeleccionar -> {
+            R.id.btn_seleccionar_foto_encargado_registrar -> {
                 listener.seleccionarFoto()
             }
         }

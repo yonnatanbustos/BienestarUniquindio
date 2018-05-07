@@ -138,6 +138,10 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         if (tipo.equals("AbrirEncargados")) {
             val fragmentList = fragment as
                     ListaEncargadoFragment
+            encargados = ArrayList()
+            encargados.add(Encargado("Yonnatan"))
+            encargados.add(Encargado("El Flaco"))
+            encargados.add(Encargado("Alzate"))
             fragmentList.encargados = encargados
         }
         val transaccion = supportFragmentManager.beginTransaction().replace(R.id.contenedor_administrador, fragment)
@@ -185,6 +189,9 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     }
 
+    /**
+     * Funcion que permite seleccionar una foto
+     */
     override fun seleccionarFoto() {
         val intent = Intent()
         intent.setType("image/**")
@@ -194,7 +201,6 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
-        selectedImageUri
         if (requestCode == Activity.RESULT_OK) {
             selectedImage = data.data
             var selectedPath = selectedImage.path
@@ -225,12 +231,14 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             txtContrasenaEncargado.isEnabled = estado
             comboServicioGestionar.isEnabled = estado
             layouts_btns_detalle_encargado.visibility = View.VISIBLE
+            fab_menu_detalle_encargado.visibility = View.INVISIBLE
         } else {
             txtNombreEncargado.isEnabled = estado
             txtCedulaEncargado.isEnabled = estado
             txtContrasenaEncargado.isEnabled = estado
             comboServicioGestionar.isEnabled = estado
             layouts_btns_detalle_encargado.visibility = View.INVISIBLE
+            fab_menu_detalle_encargado.visibility = View.VISIBLE
         }
     }
 
