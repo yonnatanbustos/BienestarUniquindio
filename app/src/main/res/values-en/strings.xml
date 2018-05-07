@@ -22,4 +22,48 @@
     <string name="labelFoto">Photo</string>
     <string name="labelNombreUsuario">Name user</string>
 
+    <string name="btnServicios">Services</string>
+    <string name="title_activity_principal_administrador">Administrator</string>
+    <string name="title_activity_principal_cliente">User</string>
+    <string name="title_activity_servicio_administrador">Services</string>
+    <string name="title_activity_login">Log In</string>
+
+    <string name="labelNombreServicio">Name</string>
+    <string name="labelLugarServicio">Place</string>
+    <string name="labelDias">Days</string>
+    <string name="labelCategoria">Categoria</string>
+    <string name="btnRegistrar">Register</string>
+    <string name="btnSeleccionar">Select</string>
+    <string name="menuBuscar">Search</string>
+    <string name="menuAgregarServicio">Add service</string>
+    <string name="btnEncargados">Managers</string>
+    <string name="itemConfigurarPerfil">configure profile</string>
+    <string-array name="comboTipo">
+        <item>ESTUDENT</item>
+        <item>TEACHER</item>
+        <item>ADMINISTRATIVE</item>
+    </string-array>
+    <string-array name="comboDependencia">
+        <item>SISTEM ENGINEERING</item>
+        <item>CIVIL ENGINEERING</item>
+        <item>ELECTRONIC ENGINEERING</item>
+    </string-array>
+    <drawable name="colorFondo">#029834</drawable>
+    <string name="labelServiciosGestionar">Service to manage</string>
+    <string-array name="comboGestionServicio">
+        <item>Football</item>
+        <item>Therapy</item>
+        <item>Psicology</item>
+    </string-array>
+    <string name="menuAgregarEncargado">Add manager</string>
+    <string name="btnModificarPerfil">Configure perfil</string>
+    <string name="itemSolicitarServicio">Apply for service</string>
+    <string name="operaciones">Operations</string>
+    <string name="misservicios">My services</string>
+    <string name="btnIngresarEncargado">Manager</string>
+    <string name="btn_guardar_cambios">Save changes</string>
+    <string name="menu">Menu</string>
+    <string name="btn_eliminar">Delete</string>
+    <string name="btn_editar">Edit</string>
+
 </resources>
