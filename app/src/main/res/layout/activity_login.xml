@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/contenedor_login"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedor_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/colorFondo"
@@ -58,6 +58,7 @@
                 android:hint="@string/labelNombreUsuario"
                 android:inputType="textEmailSubject"
                 android:padding="@dimen/padding_edit_text"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="@dimen/edit_text" />
 
@@ -79,6 +80,7 @@
                 android:hint="@string/labelContrasena"
                 android:inputType="textPassword"
                 android:padding="@dimen/padding_edit_text"
+                android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="@dimen/edit_text" />
 
@@ -147,12 +149,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:linksClickable="true"
+                    android:onClick="abrirVentanaRegistrarse"
                     android:singleLine="true"
                     android:text="@string/labelRegistrarse"
                     android:textAlignment="center"
                     android:textColor="#002299"
-                    android:textSize="30dp"
-                    android:onClick="abrirVentanaRegistrarse"/>
+                    android:textSize="30dp" />
 
             </LinearLayout>
         </LinearLayout>
