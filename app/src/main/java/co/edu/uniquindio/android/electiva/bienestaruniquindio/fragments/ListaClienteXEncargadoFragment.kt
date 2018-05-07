@@ -40,6 +40,17 @@ class ListaClienteXEncargadoFragment : Fragment(), AdaptadorCliente.OnClickAdapt
         return inflater.inflate(R.layout.fragment_lista_cliente_x_encargado, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+        clientes_x_encargado = ArrayList<Cliente>()
+        clientes_x_encargado.add(Cliente("Deportes"))
+        clientes_x_encargado.add(Cliente("Salud"))
+        clientes_x_encargado.add(Cliente("Cultural"))
+
+
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
