@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Cliente
@@ -19,7 +20,7 @@ private const val SELECT_FILE = 1
 
 class LoginActivity : AppCompatActivity(), RegistrarseFragment.OnClickRegistrarse {
 
-    lateinit var clientes : ArrayList<Cliente>
+    lateinit var clientes: ArrayList<Cliente>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,8 +112,9 @@ class LoginActivity : AppCompatActivity(), RegistrarseFragment.OnClickRegistrars
     /**
      * Funcion que permite registrar un usuario en la aplicacion desde el fragmento de RegistrarFragment
      */
-    override fun registrarUsuario(nombre:String) {
+    override fun registrarUsuario(nombre: String) {
         clientes.add(Cliente(nombre))
+        Toast.makeText(this, nombre + " ha sido usted registrado exitosamente", Toast.LENGTH_SHORT).show()
 
     }
 

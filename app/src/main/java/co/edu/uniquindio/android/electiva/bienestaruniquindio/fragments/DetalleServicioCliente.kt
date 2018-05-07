@@ -49,7 +49,7 @@ class DetalleServicioCliente : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
 
         when(v.id){
-            R.id.btn_solicitar_servicio ->{
+            R.id.fab_btn_solicitar_servicio ->{
                 listener.solicitarServicio()
             }
         }
