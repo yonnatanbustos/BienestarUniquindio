@@ -5,4 +5,9 @@ package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo
  */
 class Categoria(var nombre: String)
 {
+    /**
+     * Variable que representa la lista de servicios de la categoria
+     */
+    var servicio: ArrayList<Servicio> = ArrayList()
+
 }

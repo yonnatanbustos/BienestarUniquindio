@@ -12,6 +12,7 @@ import android.widget.ListAdapter
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Categoria
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.AdaptadorCategoria
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.Singleton
 import kotlinx.android.synthetic.main.fragment_lista_categoria.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,9 +53,10 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         categorias = ArrayList<Categoria>()
-        categorias.add(Categoria("Deportes"))
-        categorias.add(Categoria("Salud"))
-        categorias.add(Categoria("Cultural"))
+        cargarCategorias()
+        //categorias.add(Categoria("Deportes"))
+        //categorias.add(Categoria("Salud"))
+        //categorias.add(Categoria("Cultural"))
 
 
     }
@@ -82,7 +84,7 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
     }
 
     /**
-     * Funcion del¿ la creacion de las opciones del menu
+     * Funcion que crea el menu de opciones del fragmento
      */
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -119,6 +121,15 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
                 listener.abrirFragmento(RegistrarServicioFragment(), true, "")
 
             }
+        }
+    }
+
+    /**
+     * Funcion encargada de cargar la categorias de la aplicacion
+     */
+    fun cargarCategorias(){
+        for(categoria in Singleton.categorias){
+            categorias.add(categoria)
         }
     }
 

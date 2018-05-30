@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener, RegistrarseFragm
     /**
      * Metodo que crea las dependencias por defecto de la aplicacion
      */
-    fun instanciarDependencias(){
+    private fun instanciarDependencias(){
         Singleton.dependencias.add(Dependencia("FACULTAD DE INGENIERIA"))
         Singleton.dependencias.add(Dependencia("FACULTAD DE CIENCIAS BASICAS Y TECNOLOGIAS"))
         Singleton.dependencias.add(Dependencia("FACULTAD DE EDUCACION"))
