@@ -88,50 +88,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnIngresarAdministrador"
+                    android:id="@+id/btnIniciarSesion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:background="@drawable/boton_redondo"
-                    android:onClick="abrirVentanaAdministrador"
-                    android:text="@string/btnIngresarAdministrador"
+                    android:text="@string/btn_ingresar"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/texto_botones" />
-
-                <Button
-                    android:id="@+id/btnIngresarCliente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/boton_redondo"
-                    android:onClick="abrirVentanaCliente"
-                    android:text="@string/btnIngresarCliente"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/texto_botones" />
-
-                <Button
-                    android:id="@+id/btnIngresarEncargado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/boton_redondo"
-                    android:onClick="abrirVentanaEncargado"
-                    android:text="@string/btnIngresarEncargado"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/texto_botones" />
-
 
             </LinearLayout>
 
@@ -142,14 +112,12 @@
                 android:orientation="vertical"
                 android:paddingBottom="10dp">
 
-
                 <TextView
                     android:id="@+id/labelRegistrarse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:linksClickable="true"
-                    android:onClick="abrirVentanaRegistrarse"
                     android:singleLine="true"
                     android:text="@string/labelRegistrarse"
                     android:textAlignment="center"

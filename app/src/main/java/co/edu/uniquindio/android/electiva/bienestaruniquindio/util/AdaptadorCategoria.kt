@@ -13,20 +13,31 @@ import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Catego
 
 import kotlinx.android.synthetic.main.fragment_categoria.view.*
 
+/**
+ * Clase que representa el adaptador de la categoria
+ */
 class AdaptadorCategoria(var categorias: ArrayList<Categoria>, var fragmento: Fragment) : RecyclerView.Adapter<AdaptadorCategoria.CategoriaViewHolder>() {
 
-
+    /**
+     * Variable que representa el listener del adaptador
+     */
     private lateinit var listener: OnClickAdaptadorDeCategoria
 
+    //Inicializacion del listener de la clase
     init {
         listener = fragmento as OnClickAdaptadorDeCategoria
     }
 
+    /**
+     * Interface del adaptador
+     */
     interface OnClickAdaptadorDeCategoria {
         fun onClickPosition(pos: Int)
     }
 
-
+    /**
+     * Funcion en la creacion del view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             CategoriaViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -34,16 +45,22 @@ class AdaptadorCategoria(var categorias: ArrayList<Categoria>, var fragmento: Fr
         return CategoriaViewHolder(v)
     }
 
+    /**
+     * Funcion que retorna el tamaño de la lista
+     */
     override fun getItemCount(): Int {
         return categorias.size
     }
 
+    /**
+     * Funcion del bind viw holder
+     */
     override fun onBindViewHolder(holder: CategoriaViewHolder, position: Int) {
         holder?.bindCategoria(categorias.get(position))
 
     }
 
-
+    //Inner de la clase
     inner class CategoriaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
 

@@ -11,19 +11,31 @@ import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Servicio
 import kotlinx.android.synthetic.main.fragment_servicio.view.*
 
+/**
+ * Clase que representa el adapatador de servicio
+ */
 class AdaptadorServicio(var servicios: ArrayList<Servicio>, var fragmento: Fragment) : RecyclerView.Adapter<AdaptadorServicio.ServicioViewHolder>() {
 
+    /**
+     * Variable que representa el listenerdel adaptador
+     */
     private lateinit var listener: OnClickAdapatadorDeServicio
 
     init {
         listener = fragmento as OnClickAdapatadorDeServicio
     }
 
+    /**
+     * Interface para el adaptador de servicio
+     */
     interface OnClickAdapatadorDeServicio {
         fun onClickPosition(pos: Int)
     }
 
 
+    /**
+     * Funcion en la creacion de view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             ServicioViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -31,10 +43,16 @@ class AdaptadorServicio(var servicios: ArrayList<Servicio>, var fragmento: Fragm
         return ServicioViewHolder(v)
     }
 
+    /**
+     * Funcion que permite obtener el item
+     */
     override fun getItemCount(): Int {
         return servicios.size
     }
 
+    /**
+     * Funcion del bind view holder
+     */
     override fun onBindViewHolder(holder: ServicioViewHolder, position: Int) {
         holder?.bindServicio(servicios.get(position))
 

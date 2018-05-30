@@ -11,20 +11,33 @@ import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Cliente
 import kotlinx.android.synthetic.main.fragment_cliente.view.*
 
+/**
+ * Clase que representa el adaptador de cliente
+ */
 class AdaptadorCliente(var clientes_x_encargado: ArrayList<Cliente>, var fragmento: Fragment) : RecyclerView.Adapter<AdaptadorCliente.ClienteViewHolder>() {
 
-
+    /**
+     * Variable que repreenta el listener del adaptador
+     */
     private lateinit var listener: OnClickAdaptadorDeCliente
 
+    /**
+     * Inicializacion del listener de la clase
+     */
     init {
         listener = fragmento as OnClickAdaptadorDeCliente
     }
 
+    /**
+     * Interface del adaptador de cliente
+     */
     interface OnClickAdaptadorDeCliente {
         fun onClickPosition(pos: Int)
     }
 
-
+    /**
+     * Funcion en la creacion del view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             ClienteViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -32,6 +45,9 @@ class AdaptadorCliente(var clientes_x_encargado: ArrayList<Cliente>, var fragmen
         return ClienteViewHolder(v)
     }
 
+    /**
+     * Funcion que retorna el tamaño de la lista
+     */
     override fun getItemCount(): Int {
         return clientes_x_encargado.size
     }
@@ -41,7 +57,9 @@ class AdaptadorCliente(var clientes_x_encargado: ArrayList<Cliente>, var fragmen
 
     }
 
-
+    /**
+     * Inner de la clase
+     */
     inner class ClienteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
 
@@ -55,7 +73,7 @@ class AdaptadorCliente(var clientes_x_encargado: ArrayList<Cliente>, var fragmen
         }
 
         fun bindCliente(cliente: Cliente) {
-            nombre.text = cliente.nombre
+            nombre.text = cliente.nombres
             itemView.setOnClickListener(this)
         }
 

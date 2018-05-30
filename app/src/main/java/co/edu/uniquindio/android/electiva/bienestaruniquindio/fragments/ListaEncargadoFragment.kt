@@ -19,8 +19,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que representa el fragmento de la lista de encargadors
  */
 class ListaEncargadoFragment : Fragment(), AdaptadorEncargado.OnClickAdaptadorDeEncargado, View.OnClickListener {
 

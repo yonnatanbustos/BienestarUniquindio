@@ -24,6 +24,9 @@ import kotlinx.android.synthetic.main.app_bar_encargado.*
 class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaServicioFragment.OnServicioSeleccionadoListener, ListaClienteXEncargadoFragment.OnClickClienteXEncargadoSeleccionadoListener {
 
 
+    /**
+     * Funcion en la creacion de la clase
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_encargado)
@@ -40,6 +43,9 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         remplazarFragmento(ListaServicioFragment(), false)
     }
 
+    /**
+     * Funcion que retorna a la actividad anterior
+     */
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -48,12 +54,18 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
     }
 
+    /**
+     * Funcion en la creacion de la opcines del menu
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.encargado, menu)
         return true
     }
 
+    /**
+     * Funcion en las opciones del menu seleccionada
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -71,6 +83,9 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Funcion cuando se selecciona un item en la navegacion
+     */
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
@@ -88,10 +103,17 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return true
     }
 
+    /**
+     * Funcion que abre el fragmeto de servicios
+     */
     override fun onServicioSeleccionado(pos: Int) {
+        remplazarFragmento(ListaClienteXEncargadoFragment(), true)
 
     }
 
+    /**
+     * Funcion que permite reemplazar un fragmento
+     */
     fun remplazarFragmento(fragment: Fragment, guardarPila: Boolean) {
 
         val transacion = supportFragmentManager.beginTransaction()
@@ -104,6 +126,9 @@ class EncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     }
 
+    /**
+     * Funcion que permite abrir el fragmento de cliente x encargado
+     */
     override fun OnClienteXEncargadoSeleccionado(pos: Int) {
         remplazarFragmento(ListaClienteXEncargadoFragment(), true)
     }

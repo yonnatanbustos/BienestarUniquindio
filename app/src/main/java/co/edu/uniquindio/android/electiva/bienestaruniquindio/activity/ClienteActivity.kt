@@ -19,12 +19,23 @@ import kotlinx.android.synthetic.main.app_bar_cliente.*
 import kotlinx.android.synthetic.main.fragment_lista_encargado.*
 import java.util.ArrayList
 
+/**
+ * Clase que representa la actividad del cliente
+ */
 class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, ListaServicioFragment.OnServicioSeleccionadoListener, ListaMisServiciosFragment.OnServicioSeleccionadoListener, DetalleServicioCliente.OnClickDetalleServicioCliente {
 
+    /**
+     * Lista de servicios solicitados por el cliente
+     */
+    var misServiciosSolicitados = ArrayList<Servicio>()
+    /**
+     * Lista de servicios consumidos por el cliente
+     */
+    var misServiciosConsumidos = ArrayList<Servicio>()
 
-    var mis_servicios = ArrayList<Servicio>()
-
-
+    /**
+     * Funcion en la creacion de la clase
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cliente)
@@ -43,6 +54,9 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     }
 
+    /**
+     * Funcion que retorna a la actividad anterior
+     */
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -51,12 +65,18 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
     }
 
+    /**
+     * Funcion en la creacion de la opcines del menu
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.cliente, menu)
         return true
     }
 
+    /**
+     * Funcion en las opciones del menu seleccionada
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -74,6 +94,9 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Funcion cuando se selecciona un item en la navegacion
+     */
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
@@ -100,19 +123,25 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         return true
     }
 
+    /**
+     * Funcion que abre el fragmento de categoria
+     */
     override fun onCategoriaSeleccionado(pos: Int) {
         abrirFragmento(ListaServicioFragment(), true, "")
     }
 
+    /**
+     * Funcion que permite abrir fragmentos
+     */
     override fun abrirFragmento(fragment: Fragment, estado: Boolean, tipo: String) {
         if (tipo.equals("AbrirMisServicios")) {
             val fragmentList = fragment as
                     ListaMisServiciosFragment
-            mis_servicios = ArrayList()
-            mis_servicios.add(Servicio("Futbol"))
-            mis_servicios.add(Servicio("Natacion"))
-            mis_servicios.add(Servicio("Tenis"))
-            fragmentList.mis_servicios = mis_servicios
+            misServiciosSolicitados = ArrayList()
+            //misServiciosSolicitados.add(Servicio("Futbol"))
+            //misServiciosSolicitados.add(Servicio("Natacion"))
+            //misServiciosSolicitados.add(Servicio("Tenis"))
+            fragmentList.mis_servicios = misServiciosSolicitados
         }
         val transaccion = supportFragmentManager.beginTransaction().replace(R.id.contenedor_cliente, fragment)
         if (estado) {
@@ -138,10 +167,16 @@ class ClienteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     }
 
+    /**
+     * Funcion que abre el fragmento del servicio
+     */
     override fun onServicioSeleccionado(pos: Int) {
         abrirFragmento(DetalleServicioCliente(), true, "")
     }
 
+    /**
+     * Funcion cuando se solicita un servicio
+     */
     override fun solicitarServicio() {
     }
 

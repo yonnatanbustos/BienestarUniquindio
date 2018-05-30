@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Cliente
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.Singleton
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.vo.Tipo
 import kotlinx.android.synthetic.main.fragment_registrarse.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,16 +20,22 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
+ * Clase que representa el registro de un cliente
  *
  */
 class RegistrarseFragment : Fragment(), View.OnClickListener {
 
+    /**
+     * Variable que representa el listener de la clase
+     */
     lateinit var listener: OnClickRegistrarse
 
+    /**
+     * Interface que soporta los metodos del fragmento
+     */
     interface OnClickRegistrarse {
         fun seleccionarFotoRegistrarse()
-        fun registrarUsuario(nombre:String)
+        fun registrarCliente(cliente: Cliente)
     }
 
     /**
@@ -51,6 +61,9 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    /**
+     * Funcion en la creacio de la vista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -66,10 +79,35 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
                 listener.seleccionarFotoRegistrarse()
             }
             R.id.btn_registrar_usuario -> {
-                listener.registrarUsuario(txtNombres.text.toString())
+                val cedula = txtCedula.text.toString()
+                val nombres = txtNombres.text.toString()
+                val apellidos = txtApellidos.text.toString()
+                val email = txtEmail.text.toString()
+                val telefono = txtTelefono.text.toString()
+
+                val tipoCliente = comboTipo.selectedItem.toString()
+                var tipo = Tipo.ESTUDIANTE
+                if(tipoCliente.equals("PROFESOR") || tipoCliente.equals("TEACHER")){
+                    tipo = Tipo.DOCENTE
+                }
+                if(tipoCliente.equals("ADMINISTRATIVO") || tipoCliente.equals("ADMINISTRATIVE")){
+                    tipo = Tipo.DOCENTE
+                }
+
+                //listener.registrarUsuario(txtNombres.text.toString())
             }
         }
     }
 
+    fun cargarSpinner (){
+        var nameDependencias : ArrayList<String> = ArrayList()
+        for(dependencia in Singleton.dependencias){
+            nameDependencias.add(dependencia.nombre)
+        }
+
+
+        //var adaptadorDependencias:ArrayAdapter<String> = ArrayAdapter<String>(this, R.id.comboDependencia, nameDependencias)
+
+    }
 
 }//Cierre del fragmento

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="labelUsuario">Usuario</string>
+    <string name="labelUsuario">Cedula</string>
     <string name="labelContrasena">Contraseña</string>
     <string name="btnIngresarAdministrador">Administrador</string>
     <string name="btnIngresarCliente">Cliente</string>
@@ -19,7 +19,7 @@
     <string name="labelDependencia">Dependencia</string>
     <string name="labelTipo">Tipo</string>
     <string name="labelFoto">Foto</string>
-    <string name="labelNombreUsuario">Nombre de usuario</string>
+    <string name="labelNombreUsuario">Ingrese cedula</string>
 
     <string name="btnServicios">Servicios</string>
     <string name="title_activity_principal_administrador">Administrador</string>
@@ -42,11 +42,6 @@
         <item>PROFESOR</item>
         <item>ADMINISTRATIVO</item>
     </string-array>
-    <string-array name="comboDependencia">
-        <item>INGENIERIA DE SISTEMAS</item>
-        <item>INGENIERIA CIVIL</item>
-        <item>INGENIERIA ELECTRONICA</item>
-    </string-array>
     <drawable name="colorFondo">#029834</drawable>
     <string name="labelServiciosGestionar">Servicio a gestionar</string>
     <string-array name="comboGestionServicio">
@@ -64,4 +59,5 @@
     <string name="menu">Menu</string>
     <string name="btn_eliminar">Eliminar</string>
     <string name="btn_editar">Editar</string>
+    <string name="btn_ingresar">Ingresar</string>
 </resources>

@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "764386670587",
+    "firebase_url": "https://bienestaruniquindio-80029.firebaseio.com",
+    "project_id": "bienestaruniquindio-80029",
+    "storage_bucket": "bienestaruniquindio-80029.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764386670587:android:beebb69c62ee0452",
+        "android_client_info": {
+          "package_name": "co.edu.uniquindio.android.electiva.bienestaruniquindio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764386670587-ceoarln1das2rv3mmt49mmpd7fvmhvbf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.uniquindio.android.electiva.bienestaruniquindio",
+            "certificate_hash": "c224e8a4ab9ff89b193b0adb50d75f852fd924fc"
+          }
+        },
+        {
+          "client_id": "764386670587-53cechp9ut8tpi8as0j4mcfe82e80tih.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "764386670587-53cechp9ut8tpi8as0j4mcfe82e80tih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-YZzw3j9RSOAb7GwC02zHfFjOx14tC0Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764386670587-53cechp9ut8tpi8as0j4mcfe82e80tih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

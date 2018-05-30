@@ -15,11 +15,13 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que representa el fragmento con los detalle el servicio del encargadi
  */
 class DetalleServicioEncargadoFragment : Fragment() {
 
+    /**
+     * Funcion que permite la creacion de la vista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

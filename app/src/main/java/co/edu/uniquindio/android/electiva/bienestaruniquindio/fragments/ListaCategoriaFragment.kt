@@ -20,25 +20,34 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que representa el fragmento de la lista de categoria
  */
 class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDeCategoria, View.OnClickListener {
 
-
+    /**
+     * Variable que representa la lista de categorias
+     */
     lateinit var categorias: ArrayList<Categoria>
+    /**
+     * Variable que representa el adaptador de la clase
+     */
     lateinit var adaptador: AdaptadorCategoria
+    /**
+     * Variable que representa el listener de la clase
+     */
     lateinit var listener: OnCategoriaSeleccionadoListener
 
-    /*
-* Intergaz para realizar la conexion con la actividad
-*/
-
+    /**
+     * Interface que soporta las funciones del fragmento, necesario para cominucar con la actividad
+     */
     interface OnCategoriaSeleccionadoListener {
         fun onCategoriaSeleccionado(pos: Int)
         fun abrirFragmento(fragment: Fragment, estado: Boolean, tipo: String)
     }
 
+    /**
+     * Funcion en la creacion del fragmento
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -50,12 +59,18 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
 
     }
 
+    /**
+     * Funcion en la creacion de la vista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lista_categoria, container, false)
     }
 
+    /**
+     * Funcion en la creacion de la actividad
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btnAgregarServicio.setOnClickListener(this)
@@ -66,11 +81,17 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
 
     }
 
+    /**
+     * Funcion del¿ la creacion de las opciones del menu
+     */
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         super.onCreateOptionsMenu(menu, inflater)
 
     }
 
+    /**
+     * Funcion onAttach
+     */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is Activity) {
@@ -82,13 +103,16 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
         }
     }
 
+    /**
+     * Funcion de la posicion del click
+     */
     override fun onClickPosition(pos: Int) {
         listener.onCategoriaSeleccionado(pos)
     }
 
-
-
-
+    /**
+     * Funcion que se abre cuando hay un click
+     */
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btnAgregarServicio -> {

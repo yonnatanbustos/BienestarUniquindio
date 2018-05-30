@@ -18,12 +18,17 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que representa el fragmento el detalle del servico
  */
 class DetalleServicioFragment : Fragment(), View.OnClickListener {
 
+    /**
+     * Variable que representa el listener de ka ckase
+     */
     lateinit var listener: onClickDetalleServicio
+    /**
+     * Variable que indica si el servicio es modifiable
+     */
     var modificable = false
 
     /**
@@ -35,6 +40,9 @@ class DetalleServicioFragment : Fragment(), View.OnClickListener {
         fun cambiarEstado(estado: Boolean)
     }
 
+    /**
+     * Funcion que permitela creacion de la vista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -53,6 +61,9 @@ class DetalleServicioFragment : Fragment(), View.OnClickListener {
         btn_modificar_foto.setOnClickListener(this)
     }
 
+    /**
+     * Funcion onAttach
+     */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is Activity) {

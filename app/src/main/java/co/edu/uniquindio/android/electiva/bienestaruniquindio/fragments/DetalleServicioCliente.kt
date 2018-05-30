@@ -17,23 +17,34 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que representa el fragmento con el detalle del servico del cliente
  */
 class DetalleServicioCliente : Fragment(), View.OnClickListener {
 
+    /**
+     * Variable que representa el listener de la clase
+     */
     lateinit var listener: OnClickDetalleServicioCliente
 
+    /**
+     * Interface que soporta las funciones del fragmento
+     */
     interface OnClickDetalleServicioCliente{
         fun solicitarServicio()
     }
 
+    /**
+     * Funcion que permite la creacion de la ista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detalle_servicio_cliente, container, false)
     }
 
+    /**
+     * Funcion onAttach
+     */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is Activity) {
@@ -45,7 +56,9 @@ class DetalleServicioCliente : Fragment(), View.OnClickListener {
         }
     }
 
-
+    /**
+     * Funcion cuando se click en el fragmento
+     */
     override fun onClick(v: View) {
 
         when(v.id){
@@ -55,6 +68,5 @@ class DetalleServicioCliente : Fragment(), View.OnClickListener {
         }
 
     }
-
 
 }

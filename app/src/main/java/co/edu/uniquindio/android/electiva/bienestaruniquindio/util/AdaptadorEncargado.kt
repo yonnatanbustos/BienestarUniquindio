@@ -11,20 +11,31 @@ import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Encargado
 import kotlinx.android.synthetic.main.fragment_categoria.view.*
 
+/**
+ * Clase que representa el adapator de encargado
+ */
 class AdaptadorEncargado(var encargados: ArrayList<Encargado>, var fragmento: Fragment) : RecyclerView.Adapter<AdaptadorEncargado.EncargadoViewHolder>() {
 
 
+    /**
+     * Variable que representa el listener del adaptador
+     */
     private lateinit var listener: OnClickAdaptadorDeEncargado
 
     init {
         listener = fragmento as OnClickAdaptadorDeEncargado
     }
 
+    /**
+     * Interface del adaptador del encargado
+     */
     interface OnClickAdaptadorDeEncargado {
         fun onClickPosition(pos: Int)
     }
 
-
+    /**
+     * Funcion en la creacion del view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             EncargadoViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -32,16 +43,24 @@ class AdaptadorEncargado(var encargados: ArrayList<Encargado>, var fragmento: Fr
         return EncargadoViewHolder(v)
     }
 
+    /**
+     * Funcion que retorna el tamaño de la lista
+     */
     override fun getItemCount(): Int {
         return encargados.size
     }
 
+    /**
+     * Funcion en bind view holder
+     */
     override fun onBindViewHolder(holder: EncargadoViewHolder, position: Int) {
         holder?.bindEncargado(encargados.get(position))
 
     }
 
-
+    /**
+     * inner del adaptador
+     */
     inner class EncargadoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
 

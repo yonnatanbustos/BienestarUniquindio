@@ -19,13 +19,18 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que representa el fragmento con los detalles del encargadi
  */
 class DetalleEncargadoFragment : Fragment(), View.OnClickListener {
 
+    /**
+     * Variable que representa el listener de la clase
+     */
     lateinit var listener : onClickDetalleEncargado
 
+    /**
+     * Interface que soporta las funciones del fragmento
+     */
     interface onClickDetalleEncargado{
         fun cambiarEstadoVentanaDetalleEncargado(estado : Boolean)
         fun guardarCambiosDetalleEncargado()
@@ -41,6 +46,9 @@ class DetalleEncargadoFragment : Fragment(), View.OnClickListener {
         btn_cancelar_edicion_detalle_encargado.setOnClickListener(this)
     }
 
+    /**
+     * Funcion onAttach
+     */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is Activity) {
@@ -52,6 +60,9 @@ class DetalleEncargadoFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    /**
+     * Funcion que permite la creacion de la vista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="labelUsuario">User</string>
+    <string name="labelUsuario">EC</string>
     <string name="labelContrasena">Password</string>
 
     <string name="btnIngresarAdministrador">Administrator</string>
@@ -20,7 +20,7 @@
     <string name="labelDependencia">Dependency</string>
     <string name="labelTipo">Tipe</string>
     <string name="labelFoto">Photo</string>
-    <string name="labelNombreUsuario">Name user</string>
+    <string name="labelNombreUsuario">Insert EC</string>
 
     <string name="btnServicios">Services</string>
     <string name="title_activity_principal_administrador">Administrator</string>
@@ -39,14 +39,9 @@
     <string name="btnEncargados">Managers</string>
     <string name="itemConfigurarPerfil">configure profile</string>
     <string-array name="comboTipo">
-        <item>ESTUDENT</item>
+        <item>STUDENT</item>
         <item>TEACHER</item>
         <item>ADMINISTRATIVE</item>
-    </string-array>
-    <string-array name="comboDependencia">
-        <item>SISTEM ENGINEERING</item>
-        <item>CIVIL ENGINEERING</item>
-        <item>ELECTRONIC ENGINEERING</item>
     </string-array>
     <drawable name="colorFondo">#029834</drawable>
     <string name="labelServiciosGestionar">Service to manage</string>
@@ -65,5 +60,6 @@
     <string name="menu">Menu</string>
     <string name="btn_eliminar">Delete</string>
     <string name="btn_editar">Edit</string>
+    <string name="btn_ingresar">Join</string>
 
 </resources>

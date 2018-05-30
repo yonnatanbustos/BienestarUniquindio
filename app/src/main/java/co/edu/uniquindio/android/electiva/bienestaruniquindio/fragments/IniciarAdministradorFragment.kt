@@ -18,18 +18,25 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- *
+ * Clase que reprsenta el fragmento incial del administrador
  */
 class IniciarAdministradorFragment : Fragment(), View.OnClickListener {
 
+    /**
+     * Variable que representa el listener de la clase
+     */
     private lateinit var listener: OnClickIniciarAdministrador
 
+    /**
+     * Interface que soprta las funciones del fragmento
+     */
     interface OnClickIniciarAdministrador {
         fun abrirFragmento(fragment: Fragment, estado: Boolean, tipo: String)
     }
 
-
+    /**
+     * Funcion en la creacion de la vista del fragmento
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -37,6 +44,9 @@ class IniciarAdministradorFragment : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_iniciar_administrador, container, false)
     }
 
+    /**
+     * Funcion en la creacion de la actividad
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btnEncargados.setOnClickListener(this)
@@ -44,6 +54,9 @@ class IniciarAdministradorFragment : Fragment(), View.OnClickListener {
 
     }
 
+    /**
+     * Funcion onAttach
+     */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
@@ -57,6 +70,9 @@ class IniciarAdministradorFragment : Fragment(), View.OnClickListener {
 
     }
 
+    /**
+     * Funcion cuando se da click en el fragmento
+     */
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btnServicios -> {
@@ -68,6 +84,5 @@ class IniciarAdministradorFragment : Fragment(), View.OnClickListener {
             }
         }
     }
-
 
 }
