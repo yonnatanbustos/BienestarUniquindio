@@ -1,13 +1,9 @@
 package co.edu.uniquindio.android.electiva.bienestaruniquindio.activity
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -18,6 +14,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.getKeyHash
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
@@ -31,18 +28,16 @@ import kotlinx.android.synthetic.main.activity_administrador.*
 import kotlinx.android.synthetic.main.app_bar_administrador.*
 import kotlinx.android.synthetic.main.fragment_detalle_encargado.*
 import kotlinx.android.synthetic.main.fragment_detalle_servicio.*
-import kotlinx.android.synthetic.main.fragment_encargado.*
 import kotlinx.android.synthetic.main.fragment_registrar_encargado.*
-import java.io.FileNotFoundException
 import java.util.*
-import kotlin.collections.ArrayList
 
 private const val SELECT_FILE = 1
 
 /**
  * Acividad que representa el inicio del admnistrador
  */
-class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaEncargadoFragment.OnEncargadoSeleccionadoListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, IniciarAdministradorFragment.OnClickIniciarAdministrador, RegistrarServicioFragment.OnClickCalendario, RegistrarEncargadoFragment.OnClickRegistrarEncargado, ListaServicioFragment.OnServicioSeleccionadoListener, DetalleServicioFragment.onClickDetalleServicio, DetalleEncargadoFragment.onClickDetalleEncargado {
+class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListaEncargadoFragment.OnEncargadoSeleccionadoListener, ListaCategoriaFragment.OnCategoriaSeleccionadoListener, IniciarAdministradorFragment.OnClickIniciarAdministrador, RegistrarServicioFragment.OnClickRegistrarServicio, RegistrarEncargadoFragment.OnClickRegistrarEncargado, ListaServicioFragment.OnServicioSeleccionadoListener, DetalleServicioFragment.onClickDetalleServicio, DetalleEncargadoFragment.onClickDetalleEncargado {
+
 
     /**
      * Variable que representa un calendario
@@ -57,12 +52,13 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
      */
     lateinit var selectedImage: Uri
     /**
-     * Variable que representa la lista de fragmentos
+     * Variable que representa la lista de fragmentos de encargado
      */
-    lateinit var fragmentList: ListaEncargadoFragment
-    //var encargados = ArrayList<Encargado>()
-    var imageStream = null
-    var managerFB: ManagerFireBase? = null
+    lateinit var fragmentListEncargados: ListaEncargadoFragment
+    /**
+     * Variable que representa la lista de fragmentos de servicio
+     */
+    lateinit var fragmentListServicios: ListaServicioFragment
 
 
     /**
@@ -85,6 +81,8 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
         remplazarFragmento(IniciarAdministradorFragment(), true)
         getKeyHash(this)
+        fragmentListServicios = ListaServicioFragment()
+        fragmentListServicios.servicios = Singleton.servicios
 
 
     }
@@ -137,7 +135,7 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.item_agregar_servicio -> {
-                abrirFragmento(RegistrarServicioFragment(), true, "RegistrarServicio")
+                abrirFragmento(RegistrarServicioFragment(), true, "")
             }
             R.id.item_agregar_encargado -> {
                 abrirFragmento(RegistrarEncargadoFragment(), true, "RegistrarEncargado")
@@ -195,7 +193,7 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
      * Funcion que permite abrir el fragmento de categoria seleccionada
      */
     override fun onCategoriaSeleccionado(pos: Int) {
-        abrirFragmento(ListaServicioFragment(), true, "")
+        abrirFragmento(ListaServicioFragment(), true, "RegistrarServicio")
     }
 
     /**
@@ -205,11 +203,17 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
 
         if (tipo.equals("AbrirEncargados")) {
-            fragmentList = fragment as
+            fragmentListEncargados = fragment as
                     ListaEncargadoFragment
 
-            fragmentList.encargados = Singleton.encargados
+            fragmentListEncargados.encargados = Singleton.encargados
         }
+
+        //else if (tipo.equals("RegistrarServicio")){
+       //     fragmentListServicios = fragment as ListaServicioFragment
+         //   fragmentListServicios.servicios = Singleton.servicios
+
+     //   }
         val transaccion = supportFragmentManager.beginTransaction().replace(R.id.contenedor_administrador, fragment)
         if (estado) {
             transaccion.addToBackStack(null)
@@ -226,9 +230,9 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         if (encargado.cedula.length != 0 && encargado.nombre.length != 0 && encargado.telefono.length != 0 && encargado.password.length != 0) {
             if (buscarEncargado(encargado.cedula) == null) {
                 Singleton.encargados.add(encargado)
-                print("Entro al metodo 2")
-                fragmentList.adaptador.notifyItemInserted(Singleton.encargados.size - 1)
-                Log.d("Entro!!!", "Entro11")
+                fragmentListEncargados.adaptador.notifyItemInserted(Singleton.encargados.size - 1)
+                Toast.makeText(this,"Encargado registrado con exito", Toast.LENGTH_SHORT).show()
+
 
             } else {
                 throw Exception("El encargado ya existe con el mismo numero de cedula")
@@ -237,6 +241,24 @@ class AdministradorActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             throw Exception("Faltan datos por llenar")
         }
 
+    }
+
+    /**
+     * Funcion que permite registrar un servico
+     */
+    override fun registrarServicio(servicio: Servicio) {
+        if (servicio.nombre.length != 0 && servicio.ubicacion.length != 0 && servicio.horario.length != 0) {
+            if (buscarServicio(servicio.nombre) == null) {
+                Singleton.servicios.add(servicio)
+                fragmentListServicios.adaptador.notifyItemInserted(Singleton.servicios.size - 1)
+                Toast.makeText(this,"Servicio Registrado con exito", Toast.LENGTH_SHORT).show()
+
+            } else {
+                throw Exception("El nombre del servicio ya existe")
+            }
+        } else {
+            throw Exception("Faltan datos por llenar")
+        }
     }
 
     /**

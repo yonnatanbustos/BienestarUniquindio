@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -19,6 +20,7 @@ import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Admini
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Encargado
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Servicio
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.ManagerFireBase
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.Singleton
 import kotlinx.android.synthetic.main.fragment_lista_encargado.*
 import kotlinx.android.synthetic.main.fragment_lista_encargado.view.*
 import kotlinx.android.synthetic.main.fragment_registrar_encargado.*
@@ -57,8 +59,6 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        ManagerFireBase.instanciar(this)
-        managerFB = ManagerFireBase.instant
         return inflater.inflate(R.layout.fragment_registrar_encargado, container, false)
 
     }
@@ -72,8 +72,7 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
         btn_seleccionar_foto_encargado_registrar.setOnClickListener(this)
         ManagerFireBase.instanciar(this)
         managerFB = ManagerFireBase.instant
-
-
+        cargarSpinner()
     }
 
 
@@ -104,16 +103,16 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
                     var cedula = txt_cedula_encargado_registrar.text.toString()
                     var telefono = txt_telefono_encargado_registrar.text.toString()
                     var password = txt_contrasena_encargado_registrar.text.toString()
-                    var nombre_servicio = combo_servicios_gestionar_encargado_registrar.selectedItem.toString()
+                    //var nombre_servicio = combo_servicios_gestionar_encargado_registrar.selectedItem.toString()
 
-                   val servicio: Servicio? = listener.buscarServicio(nombre_servicio)
-
-                    var foto: ImageView = foto_encargado_registrar.findViewById(R.id.foto_encargado_registrar)
+                    //var foto: ImageView = foto_encargado_registrar.findViewById(R.id.foto_encargado_registrar)
                     var encargado = Encargado(cedula, nombre, telefono, password, null)
-                    //listener.agregarEncargado(encargado)
+                    listener.agregarEncargado(encargado)
                     managerFB!!.insertarEncargado(encargado)
 
                 } catch (e: Exception) {
+                    Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
+
                     e.printStackTrace()
                 }
 
@@ -121,12 +120,23 @@ class RegistrarEncargadoFragment : Fragment(), View.OnClickListener {
             }
             R.id.btn_seleccionar_foto_encargado_registrar -> {
                 listener.seleccionarFoto()
-
-
             }
         }
 
     }
 
+    /**
+     * Funcion que carga los servicos al spinner de servicios del fragmento de registro de encargado
+     */
+    fun cargarSpinner() {
+        var nameServicios: ArrayList<String> = ArrayList()
+        for (servicio in Singleton.servicios) {
+            nameServicios.add(servicio.nombre)
+        }
+
+        var adaptadorServicios: ArrayAdapter<String> = ArrayAdapter(activity.applicationContext, android.R.layout.simple_spinner_item, nameServicios)
+        adaptadorServicios.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        comboServicioEncargado.adapter = adaptadorServicios
+    }
 
 }//Cierre del fragmento

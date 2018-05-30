@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +16,7 @@ import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.sele
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Categoria
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Cliente
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Encargado
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Servicio
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.fragments.RegistrarseFragment
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.Singleton
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.vo.Dependencia
@@ -38,9 +40,15 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener, RegistrarseFragm
         instanciarCategorias()
         //Se instancias las dependencias
         instanciarDependencias()
-        cargarSpinner()
+        //Se instancian algunos servicios
+        instanciarServicios()
         btnIniciarSesion.setOnClickListener(this)
         labelRegistrarse.setOnClickListener(this)
+    }
+
+    fun instanciarServicios(){
+        Singleton.servicios.add(Servicio("Psicologia", "Cita con psicologo", "Bienestar universtario", "Aula de cita", "Lunes de 2pm a 6pm"))
+        Singleton.servicios.add(Servicio("Futbol", "Asistencia para clases de futbol","Cancha de la universidad", "", "Martes de 11am a 1pm"))
     }
 
     /**
@@ -120,7 +128,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener, RegistrarseFragm
      * Funcion que permite iniciar sesion
      */
     fun iniciarSesion(cedula: String, password: String){
-        if(cedula.equals("1094962045") and password.equals("1234")){
+        if(cedula.equals("") and password.equals("")){
             val intent = Intent(this, AdministradorActivity::class.java)
             startActivity(intent)
         }
@@ -208,8 +216,17 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener, RegistrarseFragm
      * Funcion que permite registrar un cliente en la aplicacion desde el fragmento de RegistrarFragment
      */
     override fun registrarCliente(cliente: Cliente) {
-        //clientes.add(Cliente(nombre))
-        //Toast.makeText(this, cliente.nombre + " ha sido usted registrado exitosamente", Toast.LENGTH_SHORT).show()
+        if (cliente.cedula.length != 0 && cliente.nombres.length != 0 && cliente.telefono.length != 0 && cliente.password.length != 0) {
+            if (buscarCliente(cliente.cedula) == null) {
+                Singleton.clientes.add(cliente)
+                Toast.makeText(this, cliente.nombres + " ha sido usted registrado exitosamente", Toast.LENGTH_SHORT).show()
+
+            } else {
+                throw Exception("El numero de cedula ya ha sido registrado")
+            }
+        } else {
+            throw Exception("Faltan datos por llenar")
+        }
     }
 
     /**

@@ -116,7 +116,7 @@ class ListaCategoriaFragment : Fragment(), AdaptadorCategoria.OnClickAdaptadorDe
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btnAgregarServicio -> {
-                listener.abrirFragmento(RegistrarServicioFragment(), true, "RegistrarServicio")
+                listener.abrirFragmento(RegistrarServicioFragment(), true, "")
 
             }
         }

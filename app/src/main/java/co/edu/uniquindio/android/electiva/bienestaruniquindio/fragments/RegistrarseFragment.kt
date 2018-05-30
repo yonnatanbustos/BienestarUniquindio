@@ -7,9 +7,14 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.LoginActivity
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Cliente
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.ManagerFireBase
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.Singleton
+import co.edu.uniquindio.android.electiva.bienestaruniquindio.vo.Dependencia
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.vo.Tipo
 import kotlinx.android.synthetic.main.fragment_registrarse.*
 
@@ -27,6 +32,10 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
      * Variable que representa el listener de la clase
      */
     lateinit var listener: OnClickRegistrarse
+    /**
+     * Variable que representa el administrador de la base de datos
+     */
+    var managerFB: ManagerFireBase? = null
 
     /**
      * Interface que soporta los metodos del fragmento
@@ -37,12 +46,13 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
     }
 
     /**
-     * Se añade funcionalidad a los botones del fragmento
+     * Funcion que que permite la creacion del fragmento
      */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn_seleccionar_foto_registro.setOnClickListener(this)
         btn_registrar_usuario.setOnClickListener(this)
+        cargarSpinner()
     }
 
     /**
@@ -64,6 +74,8 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        ManagerFireBase.instanciar(this)
+        managerFB = ManagerFireBase.instant
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_registrarse, container, false)
     }
@@ -82,7 +94,7 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
                 val apellidos = txtApellidos.text.toString()
                 val email = txtEmail.text.toString()
                 val telefono = txtTelefono.text.toString()
-
+                val password = txtContrasenaRegistro.text.toString()
                 val tipoCliente = comboTipo.selectedItem.toString()
                 var tipo = Tipo.ESTUDIANTE
                 if(tipoCliente.equals("PROFESOR") || tipoCliente.equals("TEACHER")){
@@ -92,10 +104,30 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
                     tipo = Tipo.DOCENTE
                 }
 
-                //listener.registrarUsuario(txtNombres.text.toString())
+                val dependencia = Dependencia(comboDependencia.selectedItem.toString())
+
+                val nuevoCliente = Cliente(cedula, nombres, apellidos, telefono, email, password, tipo, dependencia )
+
+                listener.registrarCliente(nuevoCliente)
+
+                managerFB!!.insertarCliente(nuevoCliente)
             }
         }
     }
 
+    /**
+     * Funcion que carga las dependencias al spinner de depencias del fragmento de registro de cliente
+     */
+    fun cargarSpinner (){
+        var nameDependencias : ArrayList<String> = ArrayList()
+        for(dependencia in Singleton.dependencias){
+            nameDependencias.add(dependencia.nombre)
+        }
+
+        var adaptadorDependencias: ArrayAdapter<String> = ArrayAdapter(activity.applicationContext, android.R.layout.simple_spinner_item, nameDependencias)
+        adaptadorDependencias.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        comboDependencia.adapter = adaptadorDependencias
+
+    }
 
 }//Cierre del fragmento

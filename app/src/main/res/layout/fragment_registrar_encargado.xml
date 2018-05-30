@@ -88,7 +88,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:background="@drawable/edit_text_redondo"
-                    android:hint="@string/labelContrasena"
+                    android:hint="@string/labelTelefono"
                     android:padding="@dimen/padding_edit_text"
                     android:textColorHint="@android:color/darker_gray"
                     android:textSize="@dimen/edit_text" />
@@ -105,13 +105,11 @@
                 android:textSize="@dimen/edit_text" />
 
             <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/combo_servicios_gestionar_encargado_registrar"
+                android:id="@+id/comboServicioEncargado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@android:color/white"
-                android:entries="@array/comboGestionServicio"
                 android:spinnerMode="dropdown">
 
             </android.support.v7.widget.AppCompatSpinner>

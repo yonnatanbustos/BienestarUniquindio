@@ -123,7 +123,6 @@
                 android:layout_marginRight="30dp"
                 android:background="@android:color/white"
                 android:enabled="false"
-                android:entries="@array/comboGestionServicio"
                 android:spinnerMode="dropdown">
 
             </android.support.v7.widget.AppCompatSpinner>

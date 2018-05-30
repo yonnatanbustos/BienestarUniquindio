@@ -45,11 +45,6 @@
     </string-array>
     <drawable name="colorFondo">#029834</drawable>
     <string name="labelServiciosGestionar">Service to manage</string>
-    <string-array name="comboGestionServicio">
-        <item>Football</item>
-        <item>Therapy</item>
-        <item>Psicology</item>
-    </string-array>
     <string name="menuAgregarEncargado">Add manager</string>
     <string name="btnModificarPerfil">Configure perfil</string>
     <string name="itemSolicitarServicio">Apply for service</string>
@@ -61,5 +56,7 @@
     <string name="btn_eliminar">Delete</string>
     <string name="btn_editar">Edit</string>
     <string name="btn_ingresar">Join</string>
+    <string name="descripcion">Description</string>
+    <string name="recursosDisponibles">Avaible resources</string>
 
 </resources>

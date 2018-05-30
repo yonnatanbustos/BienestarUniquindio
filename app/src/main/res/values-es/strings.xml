@@ -44,11 +44,6 @@
     </string-array>
     <drawable name="colorFondo">#029834</drawable>
     <string name="labelServiciosGestionar">Servicio a gestionar</string>
-    <string-array name="comboGestionServicio">
-        <item>Futbol</item>
-        <item>Terapia</item>
-        <item>Psicologia</item>
-    </string-array>
     <string name="menuAgregarEncargado">Agregar Encargado</string>
     <string name="btnModificarPerfil">Modificar Perfil</string>
     <string name="itemSolicitarServicio">Solicitar servicio</string>
@@ -60,4 +55,6 @@
     <string name="btn_eliminar">Eliminar</string>
     <string name="btn_editar">Editar</string>
     <string name="btn_ingresar">Ingresar</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="recursosDisponibles">Recursos disponibles</string>
 </resources>

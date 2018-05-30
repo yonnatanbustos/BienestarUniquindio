@@ -113,6 +113,25 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtContrasenaRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="30dp"
+                    android:hint="@string/labelContrasena"
+                    android:inputType="textPassword"
+                    android:textSize="30dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
             <TextView
                 android:id="@+id/labelTipo"
                 android:layout_width="match_parent"

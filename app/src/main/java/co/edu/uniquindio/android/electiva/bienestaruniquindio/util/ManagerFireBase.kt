@@ -124,6 +124,7 @@ object ManagerFireBase {
                 val cliente: Cliente =
                         p0!!.getValue(Cliente::class.java)!!
                 cliente.cedula = p0!!.key
+                Singleton.clientes.add(cliente)
                 listener!!.actualizarAdaptadorCliente(cliente)
             }
 
