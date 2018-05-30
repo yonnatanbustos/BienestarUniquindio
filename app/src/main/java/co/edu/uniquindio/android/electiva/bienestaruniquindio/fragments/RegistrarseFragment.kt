@@ -7,11 +7,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.vo.Cliente
-import co.edu.uniquindio.android.electiva.bienestaruniquindio.util.Singleton
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.vo.Tipo
 import kotlinx.android.synthetic.main.fragment_registrarse.*
 
@@ -99,15 +97,5 @@ class RegistrarseFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    fun cargarSpinner (){
-        var nameDependencias : ArrayList<String> = ArrayList()
-        for(dependencia in Singleton.dependencias){
-            nameDependencias.add(dependencia.nombre)
-        }
-
-
-        //var adaptadorDependencias:ArrayAdapter<String> = ArrayAdapter<String>(this, R.id.comboDependencia, nameDependencias)
-
-    }
 
 }//Cierre del fragmento

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.R
 import co.edu.uniquindio.android.electiva.bienestaruniquindio.activity.util.selecionarIdioma
@@ -37,6 +38,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener, RegistrarseFragm
         instanciarCategorias()
         //Se instancias las dependencias
         instanciarDependencias()
+        cargarSpinner()
         btnIniciarSesion.setOnClickListener(this)
         labelRegistrarse.setOnClickListener(this)
     }
@@ -207,7 +209,22 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener, RegistrarseFragm
      */
     override fun registrarCliente(cliente: Cliente) {
         //clientes.add(Cliente(nombre))
-        Toast.makeText(this, nombre + " ha sido usted registrado exitosamente", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, cliente.nombre + " ha sido usted registrado exitosamente", Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Funcion que carga las dependencias al spinner de depencias del fragmento de registro de cliente
+     */
+    fun cargarSpinner (){
+        var nameDependencias : ArrayList<String> = ArrayList()
+        for(dependencia in Singleton.dependencias){
+            nameDependencias.add(dependencia.nombre)
+        }
+
+        var adaptadorDependencias: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, nameDependencias)
+        adaptadorDependencias.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        comboDependencia.adapter = adaptadorDependencias
+
     }
 
 }//Cierre de la actividad
